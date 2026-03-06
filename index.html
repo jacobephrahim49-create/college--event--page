@@ -4,82 +4,215 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KIUT Tech Conference 2026</title>
+<title>Tech Innovation Summit 2026</title>
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
 background:#0f172a;
 color:white;
+transition:0.4s;
 }
 
-header{
-background:linear-gradient(135deg,#3b82f6,#9333ea);
-text-align:center;
-padding:80px 20px;
+/* Loading screen */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#020617;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+z-index:9999;
 }
 
-header h1{
-font-size:40px;
-}
+/* Light mode */
 
-header p{
-font-size:18px;
-opacity:0.9;
-}
-
-.btn{
-background:white;
+.light{
+background:#f1f5f9;
 color:#111;
-padding:12px 25px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
 }
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#020617;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+/* Hero */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#6366f1,#06b6d4);
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.typing{
+font-size:24px;
+margin-top:10px;
+}
+
+.countdown{
+font-size:26px;
+margin-top:15px;
+}
+
+/* Sections */
 
 section{
-padding:60px 20px;
-max-width:1000px;
+padding:80px 20px;
+max-width:1100px;
 margin:auto;
 }
 
 h2{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
-.cards{
+/* Stats */
+
+.stats{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
 
-.card{
+.stat{
 background:#1e293b;
-padding:20px;
+padding:30px;
 border-radius:10px;
 text-align:center;
 }
+
+/* Cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:15px;
+text-align:center;
+transform:translateY(40px);
+opacity:0;
+transition:0.6s;
+}
+
+.card.show{
+transform:translateY(0);
+opacity:1;
+}
+
+.card img{
+width:100px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+/* Parallax */
+
+.parallax{
+background:url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+height:300px;
+background-attachment:fixed;
+background-size:cover;
+background-position:center;
+}
+
+/* Schedule */
 
 .schedule{
 background:#1e293b;
 padding:20px;
 border-radius:10px;
+margin-bottom:15px;
 }
 
-.schedule div{
+/* Form */
+
+form{
+max-width:400px;
+margin:auto;
 display:flex;
-justify-content:space-between;
-padding:10px 0;
-border-bottom:1px solid #334155;
+flex-direction:column;
+gap:15px;
 }
+
+input,button{
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+button{
+background:#22c55e;
+cursor:pointer;
+}
+
+/* Map */
+
+iframe{
+width:100%;
+height:300px;
+border-radius:10px;
+}
+
+/* Toggle */
+
+.toggle{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#111;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+}
+
+/* Footer */
 
 footer{
 text-align:center;
 padding:30px;
 background:#020617;
+margin-top:40px;
 }
 
 </style>
@@ -87,38 +220,54 @@ background:#020617;
 
 <body>
 
-<header>
+<div id="loader">Loading Summit...</div>
 
-<h1>KIUT Tech Conference 2026</h1>
+<nav>
 
-<p>Innovation • Technology • Future</p>
+<h3>Tech Summit</h3>
 
-<p>April 10, 2026 | KIUT Main Hall</p>
+<div>
+<a href="#about">About</a>
+<a href="#speakers">Speakers</a>
+<a href="#schedule">Schedule</a>
+<a href="#register">Register</a>
+</div>
 
-<a class="btn" href="#register">Register Now</a>
+</nav>
 
-</header>
+
+<div class="hero">
+
+<h1>Tech Innovation Summit 2026</h1>
+
+<div class="typing" id="typing"></div>
+
+<p>📅 March 10, 2026 | 📍 Dar es Salaam</p>
+
+<div class="countdown" id="countdown"></div>
+
+</div>
 
 
 <section>
 
-<h2>Event Speakers</h2>
+<h2>Event Statistics</h2>
 
-<div class="cards">
+<div class="stats">
 
-<div class="card">
-<h3>Dr. James Mwangi</h3>
-<p>Cybersecurity Expert</p>
+<div class="stat">
+<h1>500+</h1>
+<p>Attendees</p>
 </div>
 
-<div class="card">
-<h3>Sarah Ahmed</h3>
-<p>Software Engineer</p>
+<div class="stat">
+<h1>20+</h1>
+<p>Speakers</p>
 </div>
 
-<div class="card">
-<h3>David Kim</h3>
-<p>AI Researcher</p>
+<div class="stat">
+<h1>10</h1>
+<p>Workshops</p>
 </div>
 
 </div>
@@ -126,70 +275,190 @@ background:#020617;
 </section>
 
 
-<section>
+<div class="parallax"></div>
+
+
+<section id="about">
+
+<h2>About Event</h2>
+
+<p style="text-align:center">
+Tech Innovation Summit brings together developers,
+students and industry leaders to explore AI,
+Cybersecurity and the future of Software Development.
+</p>
+
+</section>
+
+
+<section id="speakers">
+
+<h2>Key Speakers</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://i.pravatar.cc/150?img=15">
+<h3>Dr James Kim</h3>
+<p>AI Researcher</p>
+</div>
+
+<div class="card">
+<img src="https://i.pravatar.cc/150?img=22">
+<h3>Sarah Johnson</h3>
+<p>Cybersecurity Expert</p>
+</div>
+
+<div class="card">
+<img src="https://i.pravatar.cc/150?img=35">
+<h3>Michael Lee</h3>
+<p>Senior Software Engineer</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="schedule">
 
 <h2>Event Schedule</h2>
 
 <div class="schedule">
-
-<div>
-<span>09:00 AM</span>
-<span>Opening Ceremony</span>
+<h3>09:00 AM</h3>
+<p>Opening Ceremony</p>
 </div>
 
-<div>
-<span>10:00 AM</span>
-<span>AI in Modern World</span>
+<div class="schedule">
+<h3>10:30 AM</h3>
+<p>Artificial Intelligence Trends</p>
 </div>
 
-<div>
-<span>12:00 PM</span>
-<span>Networking Break</span>
+<div class="schedule">
+<h3>12:30 PM</h3>
+<p>Cybersecurity in 2026</p>
 </div>
 
-<div>
-<span>02:00 PM</span>
-<span>Cybersecurity Workshop</span>
+<div class="schedule">
+<h3>02:00 PM</h3>
+<p>Modern Web Development</p>
 </div>
 
-<div>
-<span>04:00 PM</span>
-<span>Closing Session</span>
-</div>
+</section>
 
-</div>
+
+<section>
+
+<h2>Venue</h2>
+
+<p style="text-align:center">Dar es Salaam Conference Center</p>
+
+<br>
+
+<iframe src="https://maps.google.com/maps?q=dar%20es%20salaam&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 
 </section>
 
 
 <section id="register">
 
-<h2>Register For The Event</h2>
+<h2>Register</h2>
 
-<div class="card">
+<form>
 
-<p>Join us for an exciting technology conference full of learning and networking opportunities.</p>
+<input type="text" placeholder="Full Name" required>
 
-<p><strong>Date:</strong> April 10, 2026</p>
+<input type="email" placeholder="Email Address" required>
 
-<p><strong>Venue:</strong> KIUT Main Hall</p>
+<input type="text" placeholder="University / Company">
 
-<p><strong>Entry:</strong> Free for Students</p>
+<button type="submit">Register Now</button>
 
-<br>
-
-<a class="btn" href="#">Register Now</a>
-
-</div>
+</form>
 
 </section>
 
 
 <footer>
 
-<p>© 2026 KIUT Tech Conference</p>
+<p>© 2026 Tech Innovation Summit</p>
 
 </footer>
+
+
+<button class="toggle" onclick="toggleMode()">Mode</button>
+
+
+<script>
+
+/* Loading screen */
+
+window.addEventListener("load",()=>{
+document.getElementById("loader").style.display="none";
+})
+
+
+/* Dark light */
+
+function toggleMode(){
+document.body.classList.toggle("light")
+}
+
+
+/* Countdown */
+
+const eventDate = new Date("March 10, 2026 09:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = eventDate - now;
+
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML =
+"Event starts in: " + days + "d " + hours + "h " + minutes + "m";
+
+},1000);
+
+
+/* Typing */
+
+const text="AI • Cybersecurity • Software Engineering";
+let i=0;
+
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,80);
+}
+}
+
+typing();
+
+
+/* Scroll reveal */
+
+const cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+
+cards.forEach(card=>{
+const position=card.getBoundingClientRect().top;
+const screen=window.innerHeight;
+
+if(position<screen-100){
+card.classList.add("show");
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
